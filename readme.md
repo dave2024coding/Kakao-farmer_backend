@@ -1,12 +1,12 @@
 # 📚 Application FastAPI pour Vidéos Éducatives sur l'Agriculture
 
-Cette application est conçue pour la gestion de contenus éducatifs en agriculture, permettant aux utilisateurs de publier des vidéos, suivre des formations, et interagir avec des cours.
+Cette application est conçue pour la gestion de contenus éducatifs en agriculture, permettant aux utilisateurs de publier des vidéos, suivre des playlists, et interagir avec des cours.
 
 ## 🚀 Fonctionnalités principales
 
 - **Authentification des utilisateurs** (inscription, connexion, gestion des tokens JWT)
 - **Publication de vidéos** (upload, suppression, récupération par ID)
-- **Gestion des formations** (création, mise à jour, suppression, consultation)
+- **Gestion des playlists** (création, mise à jour, suppression, consultation)
 - **Suivi des progrès des apprenants** (bientôt disponible)
 - **Module de services d'achat et de vente** (bientôt disponible)
 
@@ -25,17 +25,20 @@ app/
 │   └── models/                
 │       ├── users.py
 │       ├── videos.py
-│       └── formations.py
+│       ├── playlists.py
+|       ├── lectures.py
 |       └── __init__.py
 ├── routers/             # Endpoints API
 │   ├── users.py
 │   ├── videos.py
-│   └── formations.py
-|    └── __init__.py
+│   ├── playlists.py
+|   ├── lectures.py
+|   └── __init__.py
 ├── schemas/             # Schémas Pydantic par fonctionnalité
 │   ├── users.py
 │   ├── videos.py
-│   └── formations.py
+│   ├── playlists.py
+|   ├── lectures.py
 |   └── __init__.py
 └── main.py              # Point d'entrée principal de l'application
 ```
@@ -94,15 +97,24 @@ Authorization: Bearer <votre_token_jwt>
 - `POST /videos/` : Upload d'une vidéo (authentification requise)
 - `GET /videos/` : Lister toutes les vidéos
 - `GET /videos/{video_id}` : Obtenir une vidéo par ID (authentification requise)
-- `PUT /videos/{video_id}` : Modifier les informations d'une video
+- `PUT /videos/{video_id}` : Modifier les informationss d'une video
 - `DELETE /videos/{video_id}` : Supprimer une vidéo (propriétaire uniquement)
 
-### 🎓 Formations
-- `POST /formations/` : Créer une formation (authentification requise)
-- `GET /formations/` : Lister les formations (pagination disponible)
-- `GET /formations/{formation_id}` : Détails d'une formation
-- `PUT /formations/{formation_id}` : Mettre à jour une formation (propriétaire uniquement)
-- `DELETE /formations/{formation_id}` : Supprimer une formation (propriétaire uniquement)
+### 🎓 Playlists
+- `POST /playlists/` : Créer une playlists (authentification requise)
+- `GET /playlists/` : Lister les playlists (pagination disponible)
+- `GET /playlists/{playlists_id}` : Détails d'une playlists
+- `PUT /playlists/{playlists_id}` : Mettre à jour une playlists (propriétaire uniquement)
+- `DELETE /playlists/{playlists_id}` : Supprimer une playlists (propriétaire uniquement)
+- `GET /playlists/{playlists_id}/videos` : Mettre à jour une playlists (propriétaire uniquement)
+- `GET /playlists/{playlists_id}/` : Supprimer une playlists (propriétaire uniquement)
+
+### 🎓 Lectures
+- `POST /lectures/` : Créer une lectures (authentification requise)
+- `GET /lectures/` : Lister les lectures (pagination disponible)
+- `GET /lectures/{lectures_id}` : Détails d'une lectures
+- `PUT /lectures/{lectures_id}` : Mettre à jour une lectures (propriétaire uniquement)
+- `DELETE /lectures/{lectures_id}` : Supprimer une lectures (propriétaire uniquement)
 
 ### 👤 Utilisateurs
 - `POST /users/register` : Créer un compte utilisateur
@@ -124,10 +136,11 @@ Les contributions sont les bienvenues ! 🚀
 
 ## 🛡️ Licence
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'informations.
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'informationss.
 
 ---
 
 ## 🙌 Remerciements
 
 Merci à tous les contributeurs qui participent à l'amélioration de cette application éducative pour l'agriculture ! 🌱
+
